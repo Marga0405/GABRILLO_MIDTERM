@@ -1,0 +1,88 @@
+//Clasc to represent a person with a name and age
+class Person {
+    String name;
+    int age;
+    
+//Constructor to set up the person's details    
+    Person(String name,int age) {
+    this.name = name;
+    this.age = age;
+    
+}
+//Methos to show the person's info
+ void displayInfo() {
+     System.out.println("Name:" + name +", Age:" + age);
+ }
+ }
+ 
+ //A class for students that extends the Person class
+ class Student extends Person {
+     String studentID;
+     String course;
+     int units;
+     final int feePerUnit = 500;
+     
+     //Construct to set up the student's details
+     Student(String name, int age, String studentID, String course, int units){
+         super (name, age);
+         this.studentID = studentID;
+         this.course = course;
+         this.units = units;
+     }
+     
+     //Methos to calculate total fees for the student
+     double calculateFees() {
+         return units * feePerUnit;
+     }
+     
+     //Show the student's info, including total fees
+     @Override
+     void displayInfo() {
+         System.out.println("Student Name: " + name +", Age: " + age+", StudentID: " + studentID +", Course:" + course +", Units: " + units +", Total Fee;" + calculateFees());     }
+ }
+ 
+ //A class for instructors that also extends the Person class
+ class Instructor extends Person {  
+     String employeeID;
+     String department;
+     double salary;
+     
+    //Constructor to set up the instructor's details
+     Instructor(String name, int age, String employeeID, String department, double salary){
+         super (name, age);
+         this.employeeID = employeeID;
+         this.department = department;
+         this.salary = salary;
+         
+     }
+     
+     //Show the instructor's info
+     @Override
+     void displayInfo() {
+         System.out.println("Instructor Name: " + name +", Age: " + age+", EmployeeID: " + employeeID +", Department: " + department +", Salary: " + salary);   }
+     }
+     
+     //Main class for managing the enrollment system
+     public class EnrollmentSystem {
+         static void printDetails(Person p){
+            p.displayInfo();
+         }
+         
+         //Main method to run the program
+         public static void main(String [] args) {
+             
+             //Creating students
+             Student student1 = new Student ("Ann Margareth Gabrillo", 19, "231004705", "Computer Engineering", 4);
+             Student student2 = new Student ("Jon Raisen Ibarrientos", 20, "231004706", "Civil Engineering", 5);
+             //Creating instructors
+             Instructor instructor1 = new Instructor ("Engr. Jeam Malapo", 35, "BSS90", "Calculus 1", 7000);
+             Instructor instructor2 = new Instructor ("Sir Jonel Java", 35, "BIBI60", "Physical Education", 6000);
+             
+             printDetails(student1);
+             printDetails(student2);
+             printDetails(instructor1);
+             printDetails(instructor2);
+             
+         }
+
+     }
